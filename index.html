@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <html lang="ja">
+    <body>
+      <main>
+        <h1>FizzBuzz問題</h1>
+        <p class="p1">FizzNum:<input type="text" value="" id="input1" placeholder="整数値を入力してください"></p>
+        <p class="p2">BuzzNum:<input type="text" value="" id="input2" placeholder="整数値を入力してください"></p>
+        <p><input type="button" value="実行" id="btn" ></p>
+        <p>[出力]</p>
+          <div id="output"></div>
+      </main>
+      <script>
+          btn.addEventListener('click', () => {
+            const fizzNum = Number(document.getElementById('input1').value);
+            const buzzNum = Number(document.getElementById('input2').value);
+            const array = [];
+            const FizzNumList = [];
+            const btn = document.getElementById('btn');
+              if(!Number.isInteger(fizzNum) || !Number.isInteger(buzzNum) || fizzNum === 0 || buzzNum === 0) {
+                  output.innerHTML = '';
+                  output.innerHTML = '<p>整数値を入力してください</p>';
+                  return;
+              }
+              for(let i = 1; i < 101; i++){
+                if(i % fizzNum === 0 && i % buzzNum === 0) {
+                    array.push('FizzBuzz:' + i);
+                } else if(i % fizzNum === 0) {
+                    array.push('Fizz:' + i);
+                } else if(i % buzzNum === 0) {
+                    array.push('Buzz:' + i);
+                }
+              }
+              for (const v of array){
+                FizzNumList.push(`<p>${v}</p>`);
+              }
+              document.getElementById('output').innerHTML = FizzNumList.join('');
+　          })
+      </script>
+    </body>
+  </html>
